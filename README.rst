@@ -2,6 +2,7 @@
 Python Koans
 ============
 
+20 / 290
 Python Koans is a port of Edgecase's "Ruby Koans".
 
 .. image:: http://i442.photobucket.com/albums/qq150/gregmalcolm/PythonKoansScreenshot.png

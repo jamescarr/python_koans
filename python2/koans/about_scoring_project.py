@@ -34,10 +34,33 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+    def bucket(coll):
+        seen = []
+        for n in coll:
+            if n not in seen:
+                yield n, coll.count(n)
+            seen.append(n)
+    
+    def compute(n, count, default, special):
+        score = 0
+        if count >= 3:
+            score += special
+            count -= 3
+        score += default * count
+        return score
 
+    score = 0
+    for n, count in bucket(dice):
+        if n == 5:
+            score += compute(n, count, 50, 500)
+        elif n == 1:
+            score += compute(n, count, 100, 1000)
+        elif count >= 3:
+            score += 100 * n
+            
 
+    return score
+        
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
         self.assertEqual(0, score([]))
